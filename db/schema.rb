@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_094723) do
     t.index ["food_id"], name: "index_matches_on_food_id"
   end
 
+  add_foreign_key "coffees", "continents"
   add_foreign_key "matches", "coffees"
   add_foreign_key "matches", "foods"
 end
