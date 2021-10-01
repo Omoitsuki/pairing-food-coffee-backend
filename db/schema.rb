@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_095427) do
   end
 
   create_table "continents", force: :cascade do |t|
-    t.string "county_name"
-    t.string "district_name"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
