@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_094723) do
+ActiveRecord::Schema.define(version: 2021_10_01_095427) do
 
   create_table "coffees", force: :cascade do |t|
     t.integer "continent_id"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2021_10_01_094723) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["continent_id"], name: "index_coffees_on_continent_id"
+  end
+
+  create_table "continents", force: :cascade do |t|
+    t.string "county_name"
+    t.string "district_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "foods", force: :cascade do |t|
