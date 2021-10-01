@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_094423) do
+ActiveRecord::Schema.define(version: 2021_10_01_094723) do
 
   create_table "coffees", force: :cascade do |t|
     t.integer "continent_id"
@@ -33,4 +33,15 @@ ActiveRecord::Schema.define(version: 2021_10_01_094423) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "coffee_id"
+    t.integer "food_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coffee_id"], name: "index_matches_on_coffee_id"
+    t.index ["food_id"], name: "index_matches_on_food_id"
+  end
+
+  add_foreign_key "matches", "coffees"
+  add_foreign_key "matches", "foods"
 end
