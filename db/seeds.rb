@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Continent.create(name: "ユーラシア")
+Continent.create(name: "アフリカ")
+Continent.create(name: "オーストラリア")
+Continent.create(name: "北アメリカ")
+Continent.create(name: "南アメリカ")
+Continent.create(name: "南極")
+
+10.times do |n|
+  Coffee.create(name: "コーヒー{n}", continent_id:1)
+end
+
+10.times do |n|
+  Food.create(name: "お菓子{n}", )
+end
+
+10.times do |n|
+  Match.create( coffee_id:1,  food_id: n)
+end
+
