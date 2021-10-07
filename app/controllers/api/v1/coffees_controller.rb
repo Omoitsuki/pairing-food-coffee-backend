@@ -1,12 +1,20 @@
 class Api::V1::CoffeesController < ApplicationController
     
   def index
-    @coffees = Coffee.all
+    
     
     if params[:continent_id]
-      @coffees = Continent.find(params[:continent_id]).coffees
+      @continent = Continent.find_by_id(params[:continent_id])
+      return render json: { status: 500 } if @continent.nil?
+      
+      @coffees = @continent.coffees
     elsif params[:food_id]
-      @coffees = Food.find(params[:food_id]).matching_coffees
+      @food = Food.find_by_id(params[:food_id])
+      return render json: { status: 500 } if @food.nil?
+      
+      @coffees = @food.matching_coffees
+    else
+      @coffees = Coffee.all
     end
     
     render json: { 
@@ -16,7 +24,10 @@ class Api::V1::CoffeesController < ApplicationController
   end
   
   def show
-    @coffee = Coffee.find(params[:id])
+    @coffee = Coffee.find_by_id(params[:id])
+    
+    return render json: { status: 500 } if @coffee.nil?
+    
     @matching_foods = @coffee.matching_foods
     
     render json: { 
