@@ -3,7 +3,7 @@ class Api::V1::FoodsController < ApplicationController
   def index
     if params[:coffee_id]
       @coffee = Coffee.find_by_id(params[:coffee_id])
-      return render json: { status: 200 } if @coffee.nil?
+      return render json: { status: 500 } if @coffee.nil?
       
       @foods = @coffee.matching_foods
     else
@@ -11,7 +11,7 @@ class Api::V1::FoodsController < ApplicationController
     end
     
     render json: { 
-      status: 500, 
+      status: 200, 
       foods: @foods,
     }
   end
