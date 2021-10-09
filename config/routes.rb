@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :foods, only: [:index, :show]
+      root to: "homes#top"
+      resources :coffees, only: [:index, :show]
     end
   end
 end
